@@ -68,6 +68,6 @@ SimpleUndo
 
 ## License
 
-simple-undo is licensed under the terms of the [MIT license](LICENSE).
+simple-undo is licensed under the terms of the [Beerware license](LICENSE).
 
 2014 - Matthias Jouan
