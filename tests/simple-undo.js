@@ -13,8 +13,9 @@ describe('SimpleUndo', function() {
 	it('should contain up to maxLength items', function() {
 		var count;
 		
+		var value = 0;
 		var provider = function(done) {
-			done(Math.random());
+			done(value++);
 		}
 		
 		var history = new SimpleUndo({
@@ -24,28 +25,28 @@ describe('SimpleUndo', function() {
 		
 		history.initialize('initial');
 		
-		history.save();
+		history.save(); //0
 		count = history.count();
 		count.should.equal(1);
-		history.save();
+		history.save(); //1
 		count = history.count();
 		count.should.equal(2);
-		history.save();
+		history.save(); //2
 		count = history.count();
 		count.should.equal(3);
 		
 		//we reached the limit
-		history.save();
+		history.save(); //3
 		count = history.count();
 		count.should.equal(3);
-		history.save();
+		history.save();//4
 		count = history.count();
 		count.should.equal(3);
 
-		history.undo();
-		history.undo();
+		history.undo(); //3
+		history.undo(); //2
 		history.undo(function(value){
-			value.should.equal('initial');
+			value.should.equal(1);
 		});
 	});
 	
@@ -112,14 +113,15 @@ describe('SimpleUndo', function() {
 			onUpdate: onUpdate
 		});
 		
-		history.save();
 		callCount.should.equal(1);
-		history.undo();
+		history.save();
 		callCount.should.equal(2);
-		history.redo();
+		history.undo();
 		callCount.should.equal(3);
-		history.clear();
+		history.redo();
 		callCount.should.equal(4);
+		history.clear();
+		callCount.should.equal(5);
 	});
 	
 	it('should reset when cleared', function() {
