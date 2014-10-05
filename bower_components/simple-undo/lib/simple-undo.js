@@ -1,4 +1,6 @@
 (function() {
+	
+'use strict';
 
 /**
  * SimpleUndo is a very basic javascript undo/redo stack for managing histories of basically anything.
@@ -12,7 +14,7 @@
  */
 var SimpleUndo = function(options) {
 	
-	var options = options ? options : {};
+	var settings = options ? options : {};
 	var defaultOptions = {
 		provider: function() {
 			throw new Error("No provider!");
@@ -21,9 +23,9 @@ var SimpleUndo = function(options) {
 		onUpdate: function() {}
 	};
 	
-	this.provider = (typeof options.provider != 'undefined') ? options.provider : defaultOptions.provider;
-	this.maxLength = (typeof options.maxLength != 'undefined') ? options.maxLength : defaultOptions.maxLength;
-	this.onUpdate = (typeof options.onUpdate != 'undefined') ? options.onUpdate : defaultOptions.onUpdate;
+	this.provider = (typeof settings.provider != 'undefined') ? settings.provider : defaultOptions.provider;
+	this.maxLength = (typeof settings.maxLength != 'undefined') ? settings.maxLength : defaultOptions.maxLength;
+	this.onUpdate = (typeof settings.onUpdate != 'undefined') ? settings.onUpdate : defaultOptions.onUpdate;
 	
 	this.initialItem = null;
 	this.clear();

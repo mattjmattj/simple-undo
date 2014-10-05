@@ -1,5 +1,7 @@
 # simple-undo
 
+[![Build Status](https://travis-ci.org/mattjmattj/simple-undo.svg)](https://travis-ci.org/mattjmattj/simple-undo)
+
 simple-undo is a very basic javascript undo/redo stack for managing histories of basically anything.
 
 Initially created to help fixing an issue in [drawingboard.js](https://github.com/Leimi/drawingboard.js/issues/29).
@@ -48,6 +50,8 @@ history.redo(myObjectUnserializer);
 // myObject.foo == 'baz'
 
 ```
+
+Another example is available on the [GitHub page of the project](http://mattjmattj.github.io/simple-undo/)
 
 ## Options and API
 

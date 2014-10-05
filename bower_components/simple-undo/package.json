@@ -1,10 +1,10 @@
 {
   "name": "simple-undo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a very basic javascript undo/redo stack for managing histories of basically anything",
   "main": "./lib/simple-undo.js",
   "scripts": {
-    "test": "node_modules/.bin/grunt test"
+    "test": "node_modules/.bin/gulp test"
   },
   "repository": {
     "type": "git",
@@ -25,9 +25,10 @@
   },
   "homepage": "https://github.com/mattjmattj/simple-undo",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
-    "grunt-mocha-test": "^0.12.0",
+    "gulp": "^3.8.8",
+    "gulp-jshint": "^1.8.5",
+    "gulp-mocha": "^1.1.0",
+    "jshint": "^2.5.6",
     "mocha": "^1.21.4",
     "should": "^4.0.4"
   }
