@@ -46,57 +46,21 @@
 			<h2>source code</h2>
 			
 			<div class="row">
-				<div class="small-12 columns">
-					<pre>
-						<code class="language-javascript"></code>
-					</pre>
-				</div>
+				<div id="source-prism-holder" class="small-12 columns"></div>
 				
 		</section>
 		
-		<script id="demo-source" type="text/javascript">
-			
-			function updateButtons(history) {
-				$('#undo').attr('disabled',!history.canUndo());
-				$('#redo').attr('disabled',!history.canRedo());
-			}
-			
-			function setEditorContents(contents) {
-				$('#editor').val(contents);
-			}
-			
+		<footer>
+			SimpleUndo (c) Matthias Jouan 2014
+		</footer>
+		
+		<script id="demo-source" type="text/javascript" src="js/example.js"></script>
 
-			
-			$(function(){
-				var history = new SimpleUndo({
-					maxLength: 200,
-					provider: function(done) {
-						done($('#editor').val());
-					},
-					onUpdate: function() {
-						//onUpdate is called in constructor, making history undefined
-						if (!history) return; 
-						
-						updateButtons(history);
-					}
-				});
-				
-				$('#undo').click(function() {
-					history.undo(setEditorContents);
-				});
-				$('#redo').click(function() {
-					history.redo(setEditorContents);
-				});
-				$('#editor').keypress(function() {
-					history.save();
-				});
-				
-				updateButtons(history);
-			});
-		</script>
 		<script type="text/javascript">
-			var demoSourceContents = $('#demo-source').text()/*.replace(/\t/g,'  ')*/;
-			$('#source code').text(demoSourceContents);
+			$.get('js/example.js',function(text) {
+				$('#source-prism-holder').html('<pre><code class="language-javascript">'+text+'</code></pre>');
+				Prism.highlightAll();
+			});
 		</script>
 	</body>
 </html>
