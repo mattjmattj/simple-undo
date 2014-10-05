@@ -18,49 +18,53 @@
 		<script src="bower_components/simple-undo/lib/simple-undo.js"></script>
 		
 	</head>
-	<body>
-		<h1>simple-undo</h1>
-		<p>a very basic javascript undo/redo stack for managing histories of basically anything</p>
-		
+		<a href="https://github.com/mattjmattj/simple-undo/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
 		<noscript>
 			Javascript is required...
 		</noscript>
-		
-		<section id="demo">
-			<h2>demo</h2>
-			<div class="row">
-				<div class="small-12 columns">
-					<a role="button" href="javascript:void(0)" class="button" id="undo">Undo</a>
-					<a role="button" href="javascript:void(0)" class="button" id="redo">Redo</a>
-				</div>
-			</div>
 			
-			<div class="row">
-				<div class="small-12 columns">
-					<textarea name="editor" id="editor" rows="10"></textarea>
-				</div>
-			</div>
-		</section>
-		
-		<section id="source">
-			<h2>source code</h2>
+		<div id="main-wrapper">
+			<h1>simple-undo</h1>
+			<p>a very basic javascript undo/redo stack for managing histories of basically anything</p>
 			
-			<div class="row">
-				<div id="source-prism-holder" class="small-12 columns"></div>
+			
+			<section id="demo">
+				<h2>demo</h2>
+				<div class="row">
+					<div class="small-12 columns">
+						<a role="button" href="javascript:void(0)" class="button" id="undo" title="Undo last action">Undo</a>
+						<a role="button" href="javascript:void(0)" class="button" id="redo" title="Redo last undone action">Redo</a>
+					</div>
+				</div>
 				
-		</section>
-		
-		<footer>
-			SimpleUndo (c) Matthias Jouan 2014
-		</footer>
+				<div class="row">
+					<div class="small-12 columns">
+						<textarea name="editor" id="editor" rows="10"></textarea>
+					</div>
+				</div>
+			</section>
+			
+			<section id="source">
+				<h2>source code</h2>
+				
+				<div class="row">
+					<div id="source-prism-holder" class="small-12 columns"></div>
+					
+			</section>
+			
+			<footer>
+				SimpleUndo (c) Matthias Jouan 2014
+			</footer>
+		</div>
 		
 		<script id="demo-source" type="text/javascript" src="js/example.js"></script>
 
 		<script type="text/javascript">
-			$.get('js/example.js',function(text) {
+			$.get($('#demo-source').attr('src'),function(text) {
 				$('#source-prism-holder').html('<pre><code class="language-javascript">'+text+'</code></pre>');
 				Prism.highlightAll();
 			});
 		</script>
+		
 	</body>
 </html>
