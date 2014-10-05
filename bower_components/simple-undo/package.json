@@ -1,0 +1,34 @@
+{
+  "name": "simple-undo",
+  "version": "1.0.0",
+  "description": "a very basic javascript undo/redo stack for managing histories of basically anything",
+  "main": "./lib/simple-undo.js",
+  "scripts": {
+    "test": "node_modules/.bin/grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattjmattj/simple-undo.git"
+  },
+  "keywords": [
+    "undo",
+    "redo",
+    "history"
+  ],
+  "author": "Matthias Jouan",
+  "license": {
+    "type": "THE BEER-WARE LICENSE",
+    "url": "https://fedoraproject.org/wiki/Licensing/Beerware"
+  },
+  "bugs": {
+    "url": "https://github.com/mattjmattj/simple-undo/issues"
+  },
+  "homepage": "https://github.com/mattjmattj/simple-undo",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-mocha-test": "^0.12.0",
+    "mocha": "^1.21.4",
+    "should": "^4.0.4"
+  }
+}

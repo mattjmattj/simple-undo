@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>simple-undo : a very basic javascript undo/redo stack for managing histories of basically anything.</title>
+		<meta name="description" content="simple-undo : a very basic javascript undo/redo stack for managing histories of basically anything.">
+		<meta name="viewport" content="width=device-width">
+
+		<link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
+		<link rel="stylesheet" href="css/prism.css">
+		<link rel="stylesheet" href="css/example.css">
+		
+		<script src="bower_components/modernizr/modernizr.js"></script>
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="js/prism.js"></script>
+		
+		<script src="bower_components/simple-undo/lib/simple-undo.js"></script>
+		
+	</head>
+	<body>
+		<h1>simple-undo</h1>
+		<p>a very basic javascript undo/redo stack for managing histories of basically anything</p>
+		
+		<noscript>
+			Javascript is required...
+		</noscript>
+		
+		<section id="demo">
+			<h2>demo</h2>
+			<div class="row">
+				<div class="small-12 columns">
+					<a role="button" href="javascript:void(0)" class="button" id="undo">Undo</a>
+					<a role="button" href="javascript:void(0)" class="button" id="redo">Redo</a>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="small-12 columns">
+					<textarea name="editor" id="editor" rows="10"></textarea>
+				</div>
+			</div>
+		</section>
+		
+		<section id="source">
+			<h2>source code</h2>
+			
+			<div class="row">
+				<div class="small-12 columns">
+					<pre>
+						<code class="language-javascript"></code>
+					</pre>
+				</div>
+				
+		</section>
+		
+		<script id="demo-source" type="text/javascript">
+			
+			function updateButtons(history) {
+				$('#undo').attr('disabled',!history.canUndo());
+				$('#redo').attr('disabled',!history.canRedo());
+			}
+			
+			function setEditorContents(contents) {
+				$('#editor').val(contents);
+			}
+			
+
+			
+			$(function(){
+				var history = new SimpleUndo({
+					maxLength: 200,
+					provider: function(done) {
+						done($('#editor').val());
+					},
+					onUpdate: function() {
+						//onUpdate is called in constructor, making history undefined
+						if (!history) return; 
+						
+						updateButtons(history);
+					}
+				});
+				
+				$('#undo').click(function() {
+					history.undo(setEditorContents);
+				});
+				$('#redo').click(function() {
+					history.redo(setEditorContents);
+				});
+				$('#editor').keypress(function() {
+					history.save();
+				});
+				
+				updateButtons(history);
+			});
+		</script>
+		<script type="text/javascript">
+			var demoSourceContents = $('#demo-source').text()/*.replace(/\t/g,'  ')*/;
+			$('#source code').text(demoSourceContents);
+		</script>
+	</body>
+</html>
