@@ -51,7 +51,7 @@ history.redo(myObjectUnserializer);
 
 ```
 
-Another example is available on [GitHub page of the project](http://mattjmattj.github.io/simple-undo/)
+Another example is available on the [GitHub page of the project](http://mattjmattj.github.io/simple-undo/)
 
 ## Options and API
 
