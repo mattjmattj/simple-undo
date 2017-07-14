@@ -59,7 +59,7 @@ Accepted options are
 
 * `provider` : required. a function to call on `save`, which should provide the current state of the historized object through the given `done` callback
 * `maxLength` : the maximum number of items in history
-* `opUpdate` : a function to call to notify of changes in history. Will be called on `save`, `undo`, `redo` and `clear`
+* `onUpdate` : a function to call to notify of changes in history. Will be called on `save`, `undo`, `redo` and `clear`
 
 SimpleUndo
 
