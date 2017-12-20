@@ -1,6 +1,6 @@
 {
   "name": "simple-undo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a very basic javascript undo/redo stack for managing histories of basically anything",
   "main": "./lib/simple-undo.js",
   "scripts": {
