@@ -151,4 +151,31 @@ describe('SimpleUndo', function() {
 		});
 		
 	});
+
+	it('should reserve initial when undo position to be 0 and save', function() {
+		var count = 0;
+		var provider = function(done) {
+			done(count++);
+		}
+
+		var history = new SimpleUndo({
+			provider: provider,
+			maxLength: 3
+		});
+
+		history.initialize('initial');
+		history.save();
+		history.save();
+		history.save();
+		history.undo();
+		history.undo();
+		history.undo();
+
+		history.canUndo().should.be.false;
+		history.count().should.equal(3);
+		history.save();
+		history.stack.length.should.equal(2);
+		history.stack[0].should.equal('initial');
+		history.stack[1].should.equal(3);
+	});
 })
